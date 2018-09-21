@@ -1,0 +1,44 @@
+{
+  "name": "opti-node",
+  "version": "0.1.0",
+  "description": "run node using as few resources as possible",
+  "author": "Tony Crowe <npm@tonycrowe.com> (https://github.com/tcrowe)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tcrowe/opti-node.git"
+  },
+  "homepage": "https://github.com/tcrowe/opti-node#readme",
+  "keywords": [
+    "node",
+    "performance",
+    "embedded"
+  ],
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/tcrowe/opti-node/issues"
+  },
+  "main": "dist/index.js",
+  "bin": {
+    "opti-node": "bin/opti-node.sh"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.1.0",
+    "@babel/core": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "async": "^2.6.1",
+    "mocha": "^5.2.0",
+    "npm-run-all": "^4.1.3",
+    "should": "^13.2.3"
+  },
+  "scripts": {
+    "clean": "rm -rf dist bin",
+    "setup": "mkdir -p dist bin",
+    "dev-babel": "NODE_ENV=development babel --presets @babel/preset-env --source-maps --only src/**/*.js --out-dir dist src",
+    "dev-build-bin": "node dist/build-bin.js",
+    "dev": "run-s setup dev-*",
+    "prd-babel": "NODE_ENV=production babel --presets @babel/preset-env --no-comments --compact --minified --source-maps --only src/**/*.js --out-dir dist src",
+    "prd-build-bin": "node dist/build-bin.js",
+    "prd": "run-s setup prd-*",
+    "test": "npm test"
+  }
+}
