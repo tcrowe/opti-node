@@ -42,8 +42,8 @@
     "dev-build-bin": "node dist/build-bin.js",
     "dev": "run-s setup dev-*",
     "test": "mocha",
-    "prd-prettier": "prettier --config prettier.config.js --write src/**/*.js",
-    "prd-eslint": "eslint --config eslint.config.js src",
+    "prd-prettier": "prettier --config prettier.config.js --write {src,test}/**/*.js",
+    "prd-eslint": "eslint --config eslint.config.js {src,test}",
     "prd-babel": "NODE_ENV=production babel --presets @babel/preset-env --no-comments --compact --minified --source-maps --only src/**/*.js --out-dir dist src",
     "prd-build-bin": "node dist/build-bin.js",
     "prd": "run-s setup prd-* test"

@@ -12,7 +12,7 @@ describe("opti-node", () => {
       proc.kill()
     })
 
-    proc.on("close", (code, signal) => {
+    proc.on("close", code => {
       code.should.be.exactly(exitCode)
       done()
     })

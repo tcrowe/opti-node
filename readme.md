@@ -66,25 +66,31 @@ opti-node --require @babel/register \
 
 ## JavaScript use
 
-/**
- * Use `child_process.spawn` to create a new node process with opti-node args
- *
- * See https://nodejs.org/dist/latest/docs/api/child_process.html#child_process_child_process_spawn_command_args_options
- *
- * @method createProcess
- * @param {array} options.args maybe just your `["script.js"]`
- * @param {object} options.opts
- * @returns {object} node child process
- */
-function createProcess({args = [], opts = {}}) {
-  const renderedDynamicArgs = dynamicArgs.map(fn => fn())
-  const procArgs = [].concat(staticArgs).concat(renderedDynamicArgs)
-  return spawn(nodeCmd, args, opts)
-}
+`require("opti-node").createProcess` returns node `ChildProcess`
+
+https://nodejs.org/dist/latest/docs/api/child_process.html#child_process_child_process_spawn_command_args_options
+
++ args, `string[]` your node args added after opti-node's
++ opts: `object`, customize node spawn options
 
 ```js
 const {createProcess} = require("opti-node")
-const proc = createProcess({args: ["index.js"]})
+
+// create the opti-node process and spawn a script
+const proc = createProcess({args: ["dist/index.js"]})
+
+//
+proc.stdout.on("data", buf => {
+  console.log("buf", buf)
+  proc.kill()
+})
+
+proc.on("close", (code, signal) => {
+  console.log("code", code)
+  console.log("signal", signal)
+})
+
+proc.stdin.write(simpleMessage)
 ```
 
 ## Limit memory to specific size
