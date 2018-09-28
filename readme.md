@@ -37,7 +37,7 @@ opti-node inspect dist/index.js
 # repl
 opti-node
 
-# any extra ode flags are fine
+# any extra node flags are fine
 opti-node --require @babel/register \
   --experimental-modules \
   --trace-warnings \
@@ -106,7 +106,15 @@ No. Not yet. We might be able to prove it by enumerating `node --v8-options` the
 ## Development
 
 ```sh
+# create a dev build
 npm run dev
-npm test
+
+# before commit run a full test
 npm run prd
 ```
+
+## Science 🤓
+
+We'll try to run tests as we learn. It should produce results if we are to use it.
+
++ [Studies](./docs/studies)
