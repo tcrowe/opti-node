@@ -1,2 +1,0 @@
-"use strict";var ignorePatterns=["internal/modules/cjs/loader.js","internal/bootstrap/node.js"];function formatError(err){err.stack=err.stack.split("\n").filter(function(line){return ignorePatterns.every(function(pattern){return line.indexOf(pattern)===-1})}).map(function(line,index){if(index>0){line="  ".concat(line)}return line}).join("\n");return err}process.on("uncaughtException",function(err){console.log(formatError(err));process.exit(1)});
-//# sourceMappingURL=error-formatter.js.map
