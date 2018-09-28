@@ -1,4 +1,6 @@
+const {spawn} = require("child_process")
 const {NODE_ENV = "production", OPTI_NODE_LIMIT_RAM_MB} = process.env
+const nodeCmd = "node"
 
 const staticArgs = [
   /*
@@ -89,7 +91,6 @@ function buildLogColor() {
   if (NODE_ENV === "development") {
     return "--log_colour"
   }
-  zx
 
   return "--no-log_colour"
 }
@@ -108,4 +109,27 @@ function buildOptiNodeLimitRamMb() {
 
 const dynamicArgs = [buildLogColor, buildOptiNodeLimitRamMb]
 
-module.exports = {staticArgs, dynamicArgs}
+/**
+ * Use `child_process.spawn` to create a new node process with opti-node args
+ *
+ * See https://nodejs.org/dist/latest/docs/api/child_process.html#child_process_child_process_spawn_command_args_options
+ *
+ * @method createProcess
+ * @param {array} options.args maybe just your `["script.js"]`
+ * @param {object} options.opts
+ * @returns {object} node child process
+ */
+function createProcess({args = [], opts = {}}) {
+  // render the dynamic args
+  const renderedDynamicArgs = dynamicArgs
+    .map(fn => fn())
+    // compact
+    .filter(item => item.length > 0)
+  const procArgs = []
+    .concat(staticArgs)
+    .concat(renderedDynamicArgs)
+    .concat(args)
+  return spawn(nodeCmd, procArgs, opts)
+}
+
+module.exports = {staticArgs, dynamicArgs, createProcess}

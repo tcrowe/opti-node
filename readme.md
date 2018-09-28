@@ -13,7 +13,7 @@ Features that `opti-node` provides:
 + ✓ Signal when idle
 + ✓ Don't print anything unless it has to
 + ✓ ~~More helpful error messages~~
-  * Still need to remove internal node modules from stack trace
+  * Maybe try to remove internal node modules from stack trace
 
 Sometimes you'll get it down to 10 MB while node usually runs at over 40 MB. It keeps going back down to the minimum over time.
 
@@ -62,6 +62,29 @@ opti-node --require @babel/register \
     "start": "opti-node dist/index.js"
   }
 }
+```
+
+## JavaScript use
+
+/**
+ * Use `child_process.spawn` to create a new node process with opti-node args
+ *
+ * See https://nodejs.org/dist/latest/docs/api/child_process.html#child_process_child_process_spawn_command_args_options
+ *
+ * @method createProcess
+ * @param {array} options.args maybe just your `["script.js"]`
+ * @param {object} options.opts
+ * @returns {object} node child process
+ */
+function createProcess({args = [], opts = {}}) {
+  const renderedDynamicArgs = dynamicArgs.map(fn => fn())
+  const procArgs = [].concat(staticArgs).concat(renderedDynamicArgs)
+  return spawn(nodeCmd, args, opts)
+}
+
+```js
+const {createProcess} = require("opti-node")
+const proc = createProcess({args: ["index.js"]})
 ```
 
 ## Limit memory to specific size

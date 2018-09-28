@@ -9,7 +9,6 @@ const path = require("path")
 const async = require("async")
 const optiNodeBinPath = path.join(__dirname, "..", "bin", "opti-node.sh")
 const {staticArgs} = require("./index")
-const lineBreakPattern = /\n/g
 
 function buildSource() {
   // static opti-node args
@@ -70,9 +69,9 @@ function writeOptiNodeScript(done) {
 }
 
 function chmodOptiNodeScript(done) {
-  fs.chmod(optiNodeBinPath, 0o777, (err, res) => {
+  fs.chmod(optiNodeBinPath, 0o777, err => {
     if (err !== null && err !== undefined) {
-      console.error("error chomod", optiNodeBinPath, err)
+      console.error("error chmod", optiNodeBinPath, err)
       return done(err)
     }
 
@@ -82,7 +81,7 @@ function chmodOptiNodeScript(done) {
 
 const steps = [writeOptiNodeScript, chmodOptiNodeScript]
 
-async.series(steps, (err, res) => {
+async.series(steps, err => {
   if (err !== null && err !== undefined) {
     console.error("error doing build series", err)
   }
