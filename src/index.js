@@ -1,6 +1,6 @@
-const {spawn} = require("child_process")
-const {NODE_ENV = "production", OPTI_NODE_LIMIT_RAM_MB} = process.env
-const nodeCmd = "node"
+const { spawn } = require("child_process");
+const { NODE_ENV = "production", OPTI_NODE_LIMIT_RAM_MB } = process.env;
+const nodeCmd = "node";
 
 const staticArgs = [
   /*
@@ -81,7 +81,7 @@ const staticArgs = [
   silence all process warnings
   */
   "--no-warnings"
-]
+];
 
 function buildLogColor() {
   /*
@@ -89,10 +89,10 @@ function buildLogColor() {
   type: bool  default: true
   */
   if (NODE_ENV === "development") {
-    return "--log_colour"
+    return "--log_colour";
   }
 
-  return "--no-log_colour"
+  return "--no-log_colour";
 }
 
 function buildOptiNodeLimitRamMb() {
@@ -101,13 +101,13 @@ function buildOptiNodeLimitRamMb() {
     type: int  default: 0
    */
   if (OPTI_NODE_LIMIT_RAM_MB !== undefined) {
-    return `--max_old_space_size=${OPTI_NODE_LIMIT_RAM_MB}`
+    return `--max_old_space_size=${OPTI_NODE_LIMIT_RAM_MB}`;
   }
 
-  return ""
+  return "";
 }
 
-const dynamicArgs = [buildLogColor, buildOptiNodeLimitRamMb]
+const dynamicArgs = [buildLogColor, buildOptiNodeLimitRamMb];
 
 /**
  * Use `child_process.spawn` to create a new node process with opti-node args
@@ -119,17 +119,17 @@ const dynamicArgs = [buildLogColor, buildOptiNodeLimitRamMb]
  * @param {object} options.opts
  * @returns {object} node child process
  */
-function createProcess({args = [], opts = {}}) {
+function createProcess({ args = [], opts = {} }) {
   // render the dynamic args
   const renderedDynamicArgs = dynamicArgs
     .map(fn => fn())
     // compact
-    .filter(item => item.length > 0)
+    .filter(item => item.length > 0);
   const procArgs = []
     .concat(staticArgs)
     .concat(renderedDynamicArgs)
-    .concat(args)
-  return spawn(nodeCmd, procArgs, opts)
+    .concat(args);
+  return spawn(nodeCmd, procArgs, opts);
 }
 
-module.exports = {staticArgs, dynamicArgs, createProcess}
+module.exports = { staticArgs, dynamicArgs, createProcess };

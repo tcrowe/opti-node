@@ -4,15 +4,15 @@ tool to build opti-node shell script for ../bin
 
 */
 
-const fs = require("fs")
-const path = require("path")
-const async = require("async")
-const optiNodeBinPath = path.join(__dirname, "..", "bin", "opti-node.sh")
-const {staticArgs} = require("./index")
+const fs = require("fs");
+const path = require("path");
+const async = require("async");
+const optiNodeBinPath = path.join(__dirname, "..", "bin", "opti-node.sh");
+const { staticArgs } = require(".");
 
 function buildSource() {
   // static opti-node args
-  const otherArgs = staticArgs.join(" ")
+  const otherArgs = staticArgs.join(" ");
 
   const op = `
 
@@ -46,9 +46,9 @@ node ${otherArgs} \\
   $INTERACTIVE \\
   $@
 
-`
+`;
 
-  return op
+  return op;
 }
 
 //
@@ -56,33 +56,33 @@ node ${otherArgs} \\
 //
 
 function writeOptiNodeScript(done) {
-  const op = buildSource()
+  const op = buildSource();
 
   fs.writeFile(optiNodeBinPath, op, err => {
     if (err !== null && err !== undefined) {
-      console.error("error writing", optiNodeBinPath, err)
-      return done(err)
+      console.error("error writing", optiNodeBinPath, err);
+      return done(err);
     }
 
-    done()
-  })
+    done();
+  });
 }
 
 function chmodOptiNodeScript(done) {
   fs.chmod(optiNodeBinPath, 0o777, err => {
     if (err !== null && err !== undefined) {
-      console.error("error chmod", optiNodeBinPath, err)
-      return done(err)
+      console.error("error chmod", optiNodeBinPath, err);
+      return done(err);
     }
 
-    done()
-  })
+    done();
+  });
 }
 
-const steps = [writeOptiNodeScript, chmodOptiNodeScript]
+const steps = [writeOptiNodeScript, chmodOptiNodeScript];
 
 async.series(steps, err => {
   if (err !== null && err !== undefined) {
-    console.error("error doing build series", err)
+    console.error("error doing build series", err);
   }
-})
+});
