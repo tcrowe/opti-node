@@ -11,5 +11,9 @@
   "rules": {
     "prettier/prettier": "error",
     "no-console": [0]
+  },
+  "globals": {
+    "describe": true,
+    "it": true
   }
 }
