@@ -70,6 +70,7 @@ opti-node --require @babel/register \
 
 https://nodejs.org/dist/latest/docs/api/child_process.html#child_process_child_process_spawn_command_args_options
 
++ cmd, `string`, optional, defaults to node
 + args, `string[]` your node args added after opti-node's
 + opts: `object`, customize node spawn options
 

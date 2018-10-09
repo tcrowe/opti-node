@@ -115,11 +115,12 @@ const dynamicArgs = [buildLogColor, buildOptiNodeLimitRamMb];
  * See https://nodejs.org/dist/latest/docs/api/child_process.html#child_process_child_process_spawn_command_args_options
  *
  * @method createProcess
+ * @param {string} cmd the command to run, defaults to node
  * @param {array} options.args maybe just your `["script.js"]`
  * @param {object} options.opts
  * @returns {object} node child process
  */
-function createProcess({ args = [], opts = {} }) {
+function createProcess({ cmd = nodeCmd, args = [], opts = {} }) {
   // render the dynamic args
   const renderedDynamicArgs = dynamicArgs
     .map(fn => fn())
@@ -129,7 +130,7 @@ function createProcess({ args = [], opts = {} }) {
     .concat(staticArgs)
     .concat(renderedDynamicArgs)
     .concat(args);
-  return spawn(nodeCmd, procArgs, opts);
+  return spawn(cmd, procArgs, opts);
 }
 
 module.exports = { staticArgs, dynamicArgs, createProcess };
