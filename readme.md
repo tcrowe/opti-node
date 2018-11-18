@@ -17,6 +17,19 @@ Features that `opti-node` provides:
 
 Sometimes you'll get it down to 10 MB while node usually runs at over 40 MB. It keeps going back down to the minimum over time.
 
+Note Sat Nov 17 2018:
+I tried launching the script with Bash and Zsh. Bash was lighter in memory so I put that into the `opti-node` shell script which launches `node`.
+
+## Windows
+
+The script uses Bash. Unless Windows has a way to emulate or get around that I'm not sure yet how to add compatibility.
+
+Is there a way to run `cmd.exe` or PowerShell IF on Windows?
+
+## Ideas?
+
+If you have ideas how to slim down the node requirements and still have it work well across platforms let me know!
+
 ## Install
 
 `npm install opti-node`
