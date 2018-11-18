@@ -20,6 +20,55 @@ Sometimes you'll get it down to 10 MB while node usually runs at over 40 MB. It 
 Note Sat Nov 17 2018:
 I tried launching the script with Bash and Zsh. Bash was lighter in memory so I put that into the `opti-node` shell script which launches `node`.
 
+## systemd script
+
+```
+[Unit]
+Description=my node script
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/path/to/app/node_modules/.bin/opti-node src/index.js
+User=MY-NODE-USER
+Restart=always
+RestartSec=5
+WorkingDirectory=/path/to/app
+Environment=NODE_ENV=production
+
+[Install]
+WantedBy=multi-user.target
+```
+
+## GNU-Linux info
+
+If you run opti-node here's how you find it running:
+
+```sh
+ps -A | grep node
+# 16387 ?        00:00:00 opti-node
+# 16392 ?        00:00:01 node
+
+ps 16387
+#   PID TTY      STAT   TIME COMMAND
+# 16387 ?        Ss     0:00 /bin/bash /path/to/app/node_modules/.bin/opti-node src/index.js
+
+ps 16392
+#   PID TTY      STAT   TIME COMMAND
+# 16392 ?        Sl     0:01 node --optimize_for_size --expose_gc --gc_global --gc_interval=12000 --alw
+
+ps 16392 | less
+#   PID TTY      STAT   TIME COMMAND
+# 16392 ?        Sl     0:01 node --optimize_for_size --expose_gc --gc_global --gc_interval=12000 --always_compact --memory_reducer --hard_abort --abort_on_uncaught_exception --abort_on_stack_or_string_length_overflow --use_idle_notification --max_stack_trace_source_length=1000 --no-deprecation --no-warnings --no-log-colour src/index.js
+```
+
+*Your process numbers will different.*
+
+Maybe some other things will help:
+
++ `top -p 1234` -- the pid
++ `htop -p 1234` -- the pid
+
 ## Windows
 
 The script uses Bash. Unless Windows has a way to emulate or get around that I'm not sure yet how to add compatibility.
