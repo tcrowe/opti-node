@@ -1,3 +1,14 @@
+/*
+
+# opti-node
+
++ the node api helps build the opti-node arguments for node
++ the CLI is built by ./build-bin.js
+
+See ../COPYING for GPL 3.0 license
+
+*/
+
 const { spawn } = require("child_process");
 const { NODE_ENV = "production", OPTI_NODE_LIMIT_RAM_MB } = process.env;
 const nodeCmd = "node";

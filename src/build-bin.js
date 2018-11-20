@@ -1,6 +1,10 @@
 /*
 
-tool to build opti-node shell script for ../bin
+# opti-node
+
++ build opti-node shell script in ../bin
+
+See ../COPYING for GPL 3.0 license
 
 */
 

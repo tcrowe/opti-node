@@ -1,3 +1,9 @@
+/*
+
+See ../COPYING for GPL 3.0 license
+
+*/
+
 const path = require("path");
 const { createProcess } = require("../src");
 const { exitCode, simpleMessage, lineBreak } = require("./fixtures");
