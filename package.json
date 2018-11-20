@@ -3,7 +3,7 @@
   "version": "0.1.3",
   "description": "run node using as few resources as possible",
   "author": "Tony Crowe <npm@tonycrowe.com> (https://github.com/tcrowe)",
-  "license": "UNLICENSED",
+  "license": "GPL-3.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tcrowe/opti-node.git"
@@ -22,18 +22,17 @@
     "opti-node": "bin/opti-node.sh"
   },
   "devDependencies": {
-    "@babel/cli": "^7.1.0",
-    "@babel/core": "^7.1.0",
-    "@babel/preset-env": "^7.1.0",
+    "@babel/cli": "^7.1.5",
+    "@babel/core": "^7.1.6",
+    "@babel/preset-env": "^7.1.6",
     "@babel/register": "^7.0.0",
-    "async": "^2.6.1",
-    "eslint": "^5.6.1",
-    "eslint-config-prettier": "^3.1.0",
-    "eslint-plugin-prettier": "^2.6.2",
-    "eslint-plugin-unicorn": "^6.0.1",
+    "async": "^3.0.1-0",
+    "eslint": "^5.9.0",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-plugin-prettier": "^3.0.0",
     "mocha": "^5.2.0",
     "npm-run-all": "^4.1.3",
-    "prettier": "^1.14.3",
+    "prettier": "^1.15.2",
     "should": "^13.2.3"
   },
   "scripts": {
@@ -44,7 +43,7 @@
     "dev": "run-s setup dev-*",
     "test": "mocha",
     "prd-prettier": "prettier --write {src,test}/**/*.js",
-    "prd-eslint": "eslint {src,test}",
+    "prd-eslint": "eslint --format unix {src,test}",
     "prd-babel": "NODE_ENV=production babel --presets @babel/preset-env --no-comments --compact --minified --source-maps --only src/**/*.js --out-dir dist src",
     "prd-build-bin": "node dist/build-bin.js",
     "prd": "run-s setup prd-* test"

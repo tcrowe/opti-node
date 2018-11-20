@@ -181,3 +181,13 @@ npm run prd
 We'll try to run tests as we learn. It should produce results if we are to use it.
 
 + [Studies](./docs/studies)
+
+## Copying, license, and contributing
+
+Copyright (C) Tony Crowe <github@tonycrowe.com> (https://tcrowe.github.io) 2018
+
+Thank you for using and contributing to make opti-node better.
+
+⚠️ Please run `npm run prd` before submitting a patch.
+
+⚖️ opti-node is Free Software protected by the GPL 3.0 license. See [./COPYING](./COPYING) for more information. (free as in freedom)

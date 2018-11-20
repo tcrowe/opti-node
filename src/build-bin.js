@@ -44,8 +44,9 @@ fi
 
 # no args = interactive / REPL
 INTERACTIVE=""
+FULL_CMD="$@"
 
-if [ "$@" == "" ]; then
+if [ "$FULL_CMD" == "" ]; then
   INTERACTIVE="--interactive"
 fi
 

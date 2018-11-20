@@ -1,12 +1,12 @@
 {
   "env": {
+    "es6": true,
     "node": true
   },
-  "plugins": ["prettier", "unicorn"],
+  "plugins": ["prettier"],
   "extends": [
     "eslint:recommended",
-    "plugin:prettier/recommended",
-    "plugin:unicorn/recommended"
+    "plugin:prettier/recommended"
   ],
   "rules": {
     "prettier/prettier": "error",
