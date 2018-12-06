@@ -48,9 +48,11 @@ fi
 
 # no args = interactive / REPL
 INTERACTIVE=""
-FULL_CMD="$@"
 
-if [ "$FULL_CMD" == "" ]; then
+# COUNT == 1 means no arguments
+COUNT=\`echo "$@" | wc -c\`
+
+if [ COUNT == 1 ]; then
   INTERACTIVE="--interactive"
 fi
 

@@ -44,7 +44,7 @@
     "test": "mocha",
     "prd-prettier": "prettier --write {src,test}/**/*.js",
     "prd-eslint": "eslint --format unix {src,test}",
-    "prd-babel": "NODE_ENV=production babel --presets @babel/preset-env --no-comments --compact --minified --source-maps --only src/**/*.js --out-dir dist src",
+    "prd-babel": "NODE_ENV=production babel --presets @babel/preset-env --no-comments --source-maps --only src/**/*.js --out-dir dist src",
     "prd-build-bin": "node dist/build-bin.js",
     "prd": "run-s setup prd-* test"
   }
