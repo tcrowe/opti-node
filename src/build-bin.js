@@ -43,7 +43,7 @@ fi
 LIMIT_RAM_ARG=""
 
 if [ "$OPTI_NODE_LIMIT_RAM_MB" != "" ]; then
-  LIMIT_RAM_ARG="--max_old_space_size=$OPTI_NODE_LIMIT_RAM_MB"
+  LIMIT_RAM_ARG="--max-old-space-size=$OPTI_NODE_LIMIT_RAM_MB"
 fi
 
 # no args = interactive / REPL

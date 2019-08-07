@@ -3,7 +3,6 @@
 --bail
 --ui bdd
 --full-trace
---require @babel/register
 --require should
 --exclude echo.js
 --exclude fixtures.js

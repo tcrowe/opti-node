@@ -18,50 +18,50 @@ const staticArgs = [
     Enables optimizations which favor memory size over execution speed
     type: bool  default: false
     */
-  "--optimize_for_size",
+  "--optimize-for-size",
 
   /*
     expose gc extension
     globa.gc()
     type: bool  default: false
     */
-  "--expose_gc",
+  "--expose-gc",
 
   /*
     always perform global GCs
     type: bool  default: false
     */
-  "--gc_global",
+  "--gc-global",
 
   /*
     garbage collect after <n> allocations
     type: int  default: -1
     */
-  "--gc_interval=12000",
+  "--gc-interval=12000",
 
   /*
     Perform compaction on every full GC
     type: bool  default: false
     */
-  "--always_compact",
+  "--always-compact",
 
   /*
     use memory reducer
     type: bool  default: true
     */
-  "--memory_reducer",
+  "--memory-reducer",
 
   /*
     abort by crashing
     type: bool  default: true
     */
-  "--hard_abort",
+  "--hard-abort",
 
   /*
     abort program (dump core) when an uncaught exception is thrown
     type: bool  default: false
     */
-  "--abort_on_uncaught_exception",
+  "--abort-on-uncaught-exception",
 
   /*
     Abort program when the stack overflows or a string exceeds maximum length
@@ -69,19 +69,19 @@ const staticArgs = [
     spec behaviour would introduce nondeterminism.)
     type: bool  default: false
     */
-  "--abort_on_stack_or_string_length_overflow",
+  "--abort-on-stack-or-string-length-overflow",
 
   /*
     Use idle notification to reduce memory footprint.
     type: bool  default: true
     */
-  "--use_idle_notification",
+  "--use-idle-notification",
 
   /*
     maximum length of function source code printed in a stack trace.)
     type: int  default: 300
     */
-  "--max_stack_trace_source_length=1000",
+  "--max-stack-trace-source-length=1000",
 
   /*
   silence deprecation warnings
@@ -100,10 +100,10 @@ function buildLogColor() {
   type: bool  default: true
   */
   if (NODE_ENV === "development") {
-    return "--log_colour";
+    return "--log-colour";
   }
 
-  return "--no-log_colour";
+  return "--no-log-colour";
 }
 
 function buildOptiNodeLimitRamMb() {
@@ -112,7 +112,7 @@ function buildOptiNodeLimitRamMb() {
     type: int  default: 0
    */
   if (OPTI_NODE_LIMIT_RAM_MB !== undefined) {
-    return `--max_old_space_size=${OPTI_NODE_LIMIT_RAM_MB}`;
+    return `--max-old-space-size=${OPTI_NODE_LIMIT_RAM_MB}`;
   }
 
   return "";

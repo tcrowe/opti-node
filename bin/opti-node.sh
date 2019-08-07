@@ -23,7 +23,7 @@ fi
 LIMIT_RAM_ARG=""
 
 if [ "$OPTI_NODE_LIMIT_RAM_MB" != "" ]; then
-  LIMIT_RAM_ARG="--max_old_space_size=$OPTI_NODE_LIMIT_RAM_MB"
+  LIMIT_RAM_ARG="--max-old-space-size=$OPTI_NODE_LIMIT_RAM_MB"
 fi
 
 # no args = interactive / REPL
@@ -36,7 +36,7 @@ if [ COUNT == 1 ]; then
   INTERACTIVE="--interactive"
 fi
 
-node --optimize_for_size --expose_gc --gc_global --gc_interval=12000 --always_compact --memory_reducer --hard_abort --abort_on_uncaught_exception --abort_on_stack_or_string_length_overflow --use_idle_notification --max_stack_trace_source_length=1000 --no-deprecation --no-warnings \
+node --optimize-for-size --expose-gc --gc-global --gc-interval=12000 --always-compact --memory-reducer --hard-abort --abort-on-uncaught-exception --abort-on-stack-or-string-length-overflow --use-idle-notification --max-stack-trace-source-length=1000 --no-deprecation --no-warnings \
   $LOG_COLOR_ARG \
   $LIMIT_RAM_ARG \
   $INTERACTIVE \

@@ -17,35 +17,28 @@
   "bugs": {
     "url": "https://github.com/tcrowe/opti-node/issues"
   },
-  "main": "dist/index.js",
+  "main": "src/index.js",
   "bin": {
     "opti-node": "bin/opti-node.sh"
   },
   "devDependencies": {
-    "@babel/cli": "^7.1.5",
-    "@babel/core": "^7.1.6",
-    "@babel/preset-env": "^7.1.6",
-    "@babel/register": "^7.0.0",
     "async": "^3.0.1-0",
-    "eslint": "^5.9.0",
-    "eslint-config-prettier": "^3.3.0",
-    "eslint-plugin-prettier": "^3.0.0",
-    "mocha": "^5.2.0",
-    "npm-run-all": "^4.1.3",
-    "prettier": "^1.15.2",
+    "eslint": "^6.1.0",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "mocha": "^6.2.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^1.18.2",
     "should": "^13.2.3"
   },
   "scripts": {
-    "clean": "rm -rf dist bin",
-    "setup": "mkdir -p dist bin",
-    "dev-babel": "NODE_ENV=development babel --presets @babel/preset-env --source-maps --only src/**/*.js --out-dir dist src",
-    "dev-build-bin": "node dist/build-bin.js",
+    "setup": "mkdir -p bin",
+    "dev-build-bin": "node src/build-bin.js",
     "dev": "run-s setup dev-*",
     "test": "mocha",
     "prd-prettier": "prettier --write {src,test}/**/*.js",
     "prd-eslint": "eslint --format unix {src,test}",
-    "prd-babel": "NODE_ENV=production babel --presets @babel/preset-env --no-comments --source-maps --only src/**/*.js --out-dir dist src",
-    "prd-build-bin": "node dist/build-bin.js",
+    "prd-build-bin": "node src/build-bin.js",
     "prd": "run-s setup prd-* test"
   }
 }

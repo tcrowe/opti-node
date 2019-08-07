@@ -20,6 +20,9 @@ Sometimes you'll get it down to 10 MB while node usually runs at over 40 MB. It 
 Note Sat Nov 17 2018:
 I tried launching the script with Bash and Zsh. Bash was lighter in memory so I put that into the `opti-node` shell script which launches `node`.
 
+Note Wed Aug 7 2019:
+At some point they changed the flags from using underscores to dashes. If your node version uses underscores use `opti-node@0.3.1`. Otherwise all the new versions use the newer flags. Check `node --v8-options` if you are unsure.
+
 ## systemd script
 
 ```
@@ -55,11 +58,11 @@ ps 16387
 
 ps 16392
 #   PID TTY      STAT   TIME COMMAND
-# 16392 ?        Sl     0:01 node --optimize_for_size --expose_gc --gc_global --gc_interval=12000 --alw
+# 16392 ?        Sl     0:01 node --optimize-for-size --expose-gc --gc-global --gc-interval=12000 --alw
 
 ps 16392 | less
 #   PID TTY      STAT   TIME COMMAND
-# 16392 ?        Sl     0:01 node --optimize_for_size --expose_gc --gc_global --gc_interval=12000 --always_compact --memory_reducer --hard_abort --abort_on_uncaught_exception --abort_on_stack_or_string_length_overflow --use_idle_notification --max_stack_trace_source_length=1000 --no-deprecation --no-warnings --no-log-colour src/index.js
+# 16392 ?        Sl     0:01 node --optimize-for-size --expose-gc --gc-global --gc-interval=12000 --always-compact --memory-reducer --hard-abort --abort-on-uncaught-exception --abort-on-stack-or-string-length-overflow --use-idle-notification --max-stack-trace-source-length=1000 --no-deprecation --no-warnings --no-log-colour src/index.js
 ```
 
 *Your process numbers will different.*
