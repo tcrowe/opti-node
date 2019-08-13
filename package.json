@@ -1,6 +1,6 @@
 {
   "name": "opti-node",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "run node using as few resources as possible",
   "author": "Tony Crowe <npm@tonycrowe.com> (https://github.com/tcrowe)",
   "license": "GPL-3.0",
