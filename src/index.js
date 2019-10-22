@@ -64,14 +64,6 @@ const staticArgs = [
   "--abort-on-uncaught-exception",
 
   /*
-    Abort program when the stack overflows or a string exceeds maximum length
-    (as opposed to throwing RangeError). This is useful for fuzzing where the
-    spec behaviour would introduce nondeterminism.)
-    type: bool  default: false
-    */
-  "--abort-on-stack-or-string-length-overflow",
-
-  /*
     Use idle notification to reduce memory footprint.
     type: bool  default: true
     */

@@ -36,7 +36,7 @@ if [ COUNT == 1 ]; then
   INTERACTIVE="--interactive"
 fi
 
-node --optimize-for-size --expose-gc --gc-global --gc-interval=12000 --always-compact --memory-reducer --hard-abort --abort-on-uncaught-exception --abort-on-stack-or-string-length-overflow --use-idle-notification --max-stack-trace-source-length=1000 --no-deprecation --no-warnings \
+node --optimize-for-size --expose-gc --gc-global --gc-interval=12000 --always-compact --memory-reducer --hard-abort --abort-on-uncaught-exception --use-idle-notification --max-stack-trace-source-length=1000 --no-deprecation --no-warnings \
   $LOG_COLOR_ARG \
   $LIMIT_RAM_ARG \
   $INTERACTIVE \
